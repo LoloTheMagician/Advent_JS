@@ -40,17 +40,23 @@
 //         .at(0) ?? ''
 // }
 
-const findNaughtyStep = (original, modified) => {
+// const findNaughtyStep = (original, modified) => {
 
+//     const [short, long] = [original, modified].sort((a, b) => a.length - b.length)
+
+//     for (const i in long) {
+//         const [letter_long, letter_short] = [long[i], short[i]]
+//         if (letter_long !== letter_short) return letter_long
+//     }
+
+//     return ''
+
+// }
+
+const findNaughtyStep = (original, modified) => {
     const [short, long] = [original, modified].sort((a, b) => a.length - b.length)
 
-    for (const i in long) {
-        const [letter_long, letter_short] = [long[i], short[i]]
-        if (letter_long !== letter_short) return letter_long
-    }
-
-    return ''
-
+    return [...long].find((letter, i) => letter !== short[i]) ?? '';
 }
 
 console.log(findNaughtyStep('abcd', 'abcde'))
